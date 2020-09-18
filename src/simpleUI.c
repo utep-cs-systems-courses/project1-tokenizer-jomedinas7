@@ -26,6 +26,10 @@ int main()
   printf(" in this String.");
   printf("\n");
 
+  char* ptr = str;
+  printf("%s\n",ptr);
+  printf("%d\n",count_words(ptr));
+
   return 1;
  
 }

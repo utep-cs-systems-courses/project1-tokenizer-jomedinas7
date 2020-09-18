@@ -24,7 +24,7 @@ char *word_start(char *str)
 {
   int index = 0;
   //if there is a space at the beginning of the string, this will skip over them until a character is found
-  while(space_char(str[index])
+  while(space_char(str[index]))
   {
     index++;
   }
@@ -36,7 +36,7 @@ char *word_start(char *str)
 char *word_terminator(char *str)
 {
   int index = 0;
-  while(non_space_char(str[index])
+  while(non_space_char(str[index]))
   {
     index++;
   }
@@ -45,7 +45,23 @@ char *word_terminator(char *str)
 
 int count_words(char *str)
 {
-  return 0;
+  int num_words = 0;
+  char *ptr = str;
+  while(space_char(*ptr))
+  {
+    ptr++;
+  }
+  if(*ptr == '\0')
+  {
+    return num_words; 
+  }
+  while(*ptr != '\0')
+  {
+    ptr = word_start(ptr);
+    ptr = word_terminator(ptr);
+    num_words++;
+  }
+  return num_words;
 }
   
 
