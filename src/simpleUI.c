@@ -27,9 +27,11 @@ int main()
   printf("\n");
 
   char* ptr = str;
-  printf("%s\n",ptr);
-  printf("%d\n",count_words(ptr));
-
+  printf("Words in this string: %d\n",count_words(ptr));
+  char* strDup = copy_str(ptr, 3);
+  //  printf("%p\n",strDup);
+  printf("%s\n",strDup);
+  printf("%c\n",strDup[4]);
   return 1;
  
 }

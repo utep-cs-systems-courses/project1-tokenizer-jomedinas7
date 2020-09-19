@@ -63,6 +63,23 @@ int count_words(char *str)
   }
   return num_words;
 }
+
+char* copy_str(char *inStr, short len)
+{
+  char *p;
+  p = (char *)malloc((len+1)*sizeof(char));
+  if(!p){
+    printf("Memory allocation failed");
+  }
+  for(int i = 0; i<len; i++)
+  {
+    p[i] = inStr[i];
+  }
+  p[len+1]= '\0';
+    printf("Copied String:%s\n",p);
+  return p;
+
+}
   
 
 
