@@ -17,8 +17,7 @@ int non_space_char(char c)
     return 0;
   }
   return 1;
-  
-}
+} 
 
 char *word_start(char *str)
 {
@@ -76,9 +75,27 @@ char* copy_str(char *inStr, short len)
     p[i] = inStr[i];
   }
   p[len+1]= '\0';
-    printf("Copied String:%s\n",p);
+  // printf("Copied String:%s\n",p);
   return p;
 
+}
+
+char **tokenize(char *inStr)
+{
+  int numWords = count_words(inStr);
+  char **tokens = (char**)malloc(sizeof(char*)*(numWords+1));
+  char* wordProg = inStr;
+  int i = 0;
+  for(i = 0; i <numWords; i++)
+  {
+    tokens[i] = copy_str(wordProg,(word_terminator(wordProg)-word_start(wordProg)));
+    wordProg = word_start(wordProg);
+    wordProg = word_terminator(wordProg);
+    wordProg = word_start(wordProg);
+  }
+  tokens[i] = '\0';
+  return tokens;
+  
 }
   
 

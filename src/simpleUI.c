@@ -21,17 +21,15 @@ int main()
     }
     index++;
   }
-  printf("There are ");
-  printf("%d", numSpaces);
-  printf(" in this String.");
-  printf("\n");
+  printf("Spaces in string:  %d\n", numSpaces);
 
   char* ptr = str;
   printf("Words in this string: %d\n",count_words(ptr));
-  char* strDup = copy_str(ptr, 3);
-  //  printf("%p\n",strDup);
-  printf("%s\n",strDup);
-  printf("%c\n",strDup[4]);
+  //printf("%s\n",strDup);
+  int numLetters = word_terminator(ptr) - word_start(ptr);
+  printf("number of letters: %d\n",numLetters);
+  //char* strDup = copy_str(ptr,numLetters);
+  char **tokens = tokenize(ptr);
   return 1;
  
 }
