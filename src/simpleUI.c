@@ -25,11 +25,8 @@ int main()
 
   char* ptr = str;
   printf("Words in this string: %d\n",count_words(ptr));
-  //printf("%s\n",strDup);
-  int numLetters = word_terminator(ptr) - word_start(ptr);
-  printf("number of letters: %d\n",numLetters);
-  //char* strDup = copy_str(ptr,numLetters);
   char **tokens = tokenize(ptr);
+  print_tokens(tokens);
   return 1;
  
 }

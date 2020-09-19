@@ -97,6 +97,16 @@ char **tokenize(char *inStr)
   return tokens;
   
 }
+
+void print_tokens(char **tokens)
+{
+  int index = 0;
+  while(tokens[index])
+    {
+      printf("%s\n",tokens[index],index);
+      index++;
+    }
+}
   
 
 
