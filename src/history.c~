@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "history.h"
+
+List *init_history()
+{
+  List *hist = malloc(sizeof(List));
+  hist -> root = 0;
+  return hist;
+}
+
+void add_history(List *list, char *str)
+{
+  int nodeID = 1;
+  Item *ptr = list->root;
+  if(ptr != 0)
+  {
+    while(ptr ->next != 0)
+      {
+	ptr = ptr->next;
+	nodeID++;
+      }
+  }
+  Item *newNode = malloc(sizeof(Item));
+  newNode -> id = nodeID;
+  char* strEnd = str;
+  while(strEnd++)
+  {
+    ;
+  }
+  char* strCopy = (char *)malloc((strEnd-str+1)*sizeof(char));
+  while((*strCopy++ = *str++))
+  {
+    ;
+  }
+  printf("%s\n",strCopy);
+    newNode ->str = strCopy;
+    newNode ->next = 0;
+    ptr = newNode;
+}
+
+char *get_history(List *list, int id)
+{
+  Item *ptr = list -> root;
+  int nodeIdx = 1;
+  while(ptr -> next)
+  {
+    if(nodeIdx== id)
+      {
+	return ptr->str;
+      }
+    ptr = ptr -> next;
+    nodeIdx++;
+  }
+  return '\0';
+}
+
+void print_history(List *list)
+{
+  printf("here we go\n");
+  Item *ptr = list -> root;
+  while(ptr!=0)
+  {
+    printf("%s\n",ptr -> str);
+    ptr = ptr->next;
+  }
+}
+
+int main()
+{
+  List *list1 = init_history();
+  char *str1 = "hello";
+  add_history(list1,str1);
+  printf("added to history\n");
+  print_history(list1);
+}
