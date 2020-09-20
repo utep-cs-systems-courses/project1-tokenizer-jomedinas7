@@ -103,11 +103,27 @@ void print_tokens(char **tokens)
   int index = 0;
   while(tokens[index])
     {
-      printf("%s\n",tokens[index],index);
+      printf("%s\n",tokens[index]);
       index++;
     }
 }
-  
+void free_tokens(char **tokens)
+{
+  for(int i = 0; tokens[i];i++)
+  {
+    free(tokens[i]);
+    tokens[i] = NULL;
+    if(!tokens[i]){
+      printf("memory freed!\n");
+    }
+  }
+  free(tokens);
+  tokens = NULL;
+  if(!tokens)
+  {
+    printf("Malloc Memory successfully freed.\n");
+  }
+}
 
 
   
