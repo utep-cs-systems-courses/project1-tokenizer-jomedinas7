@@ -81,23 +81,29 @@ void free_history(List *list)
   Item *temp;
   while(ptr != 0){
     temp = ptr->next;
+    free(ptr -> str);
+    ptr -> str = NULL;
     free(ptr);
     ptr = temp;
   }
-  free(ptr);
+  free(list->root);
+  list -> root = NULL;
   free(list);
+  list = NULL;
 }
-
+/*
 int main()
 {
   List *list1 = init_history();
   char *str1 = "hello";
   char *str2 = "bitch";
   char *str3 = "working";
+  char *str4 = "no";
   add_history(list1,str1);
   add_history(list1,str2);
   add_history(list1,str3);
+  add_history(list1,str4);
   print_history(list1);
   free_history(list1);
-  print_history(list1);
 }
+*/
