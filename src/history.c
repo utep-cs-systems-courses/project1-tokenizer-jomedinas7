@@ -15,7 +15,7 @@ void add_history(List *list, char *str)
   Item *ptr = list->root;
   if(ptr == 0)
   {
-    printf("This list is empty\n");
+    //It is what it is...
   }
   else{
     while(ptr ->next != 0)
@@ -53,7 +53,7 @@ char *get_history(List *list, int id)
 {
   Item *ptr = list -> root;
   int nodeIdx = 1;
-  while(ptr -> next)
+  while(ptr != 0)
   {
     if(nodeIdx== id)
       {
@@ -62,16 +62,16 @@ char *get_history(List *list, int id)
     ptr = ptr -> next;
     nodeIdx++;
   }
-  return '\0';
+  return "That history ID was not found";
 }
 
 void print_history(List *list)
 {
   Item *ptr = list -> root;
-  printf("This is the root: %s\n",ptr->str);
+  // printf("This is the root: %s\n",ptr->str);
   while(ptr!=0)
   {
-    printf("%s\n",ptr -> str);
+    printf("ID: %d, %s\n",ptr -> id,ptr -> str);
     ptr = ptr->next;
   }
 }
@@ -91,19 +91,4 @@ void free_history(List *list)
   free(list);
   list = NULL;
 }
-/*
-int main()
-{
-  List *list1 = init_history();
-  char *str1 = "hello";
-  char *str2 = "bitch";
-  char *str3 = "working";
-  char *str4 = "no";
-  add_history(list1,str1);
-  add_history(list1,str2);
-  add_history(list1,str3);
-  add_history(list1,str4);
-  print_history(list1);
-  free_history(list1);
-}
-*/
+

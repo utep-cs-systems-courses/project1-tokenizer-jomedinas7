@@ -6,22 +6,12 @@
 
 int main()
 {
+  printf("Hello, please enter a string: \n\n");
   printf("$");
   char str[50];
   scanf("%[^\n]s",str,50);
-  printf(str);
-  printf("\n");
-
-  int index = 0;
-  int numSpaces = 0;
-  while(str[index] != '\0')
-  {
-    if(space_char(str[index]))
-    {
-      numSpaces++;
-    }
-    index++;
-  }
+  printf("Your string is: %s\n",str);
+  
   char* ptr = str;
   printf("Words in this string: %d\n",count_words(ptr));
   char **tokens = tokenize(ptr);
@@ -32,8 +22,24 @@ int main()
     add_history(list1,tokens[i]);
     i++;
   }
-  print_history(list1);
-  // free_tokens(tokens);
+  int id;
+  while(1)
+  {
+    printf("Which string would you like to pull from the history? (or enter any non-integer to exit)\n $");
+    int key = scanf("%d",&id);
+    printf("%d",key);
+    if(key == 0)
+      {
+	break;
+      }
+    else
+      {
+	printf("%s\n",get_history(list1,id));
+      }
+   }
+  // print_history(list1);
+  free_tokens(tokens);
+  free_history(list1);
   return 1;
  
 }
