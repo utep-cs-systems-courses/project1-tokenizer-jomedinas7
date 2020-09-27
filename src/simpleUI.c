@@ -6,28 +6,39 @@
 
 int main()
 {
-  printf("Hello, please enter a string: \n\n");
-  printf("$");
-  char str[50];
-  scanf("%[^\n]s",str,50);
-  printf("Your string is: %s\n",str);
-  
-  char* ptr = str;
-  printf("Words in this string: %d\n",count_words(ptr));
-  char **tokens = tokenize(ptr);
-  // print_tokens(tokens);
   List *list1 = init_history();
-  int i = 0;
-  while(tokens[i]){
-    add_history(list1,tokens[i]);
-    i++;
+  char input[80];
+  while(1)
+  {
+    printf("Hello, enter @ to stop inputing strings, or & to input a new string: \n\n");
+    printf("$");
+    char str[50];
+    fgets(str,50,stdin);
+    // printf("Your string is: %s\n",str);
+    if(str[0] == '@'){
+      printf("You're done inputing strings\n");
+      break;
+    }
+    if(str[0] == '&'){
+      printf("$");
+      printf("%c",272);
+      fgets(input,80,stdin);
+ 
+      char* ptr = input;
+      printf("Words in this string: %d\n",count_words(ptr));
+      char **tokens = tokenize(ptr);
+      print_tokens(tokens);
+      free_tokens(tokens);
+      add_history(list1,ptr);
+    }
   }
+  print_history(list1);
+  
   int id;
   while(1)
   {
     printf("Which string would you like to pull from the history? (or enter any non-integer to exit)\n $");
     int key = scanf("%d",&id);
-    printf("%d",key);
     if(key == 0)
       {
 	break;
@@ -37,8 +48,6 @@ int main()
 	printf("%s\n",get_history(list1,id));
       }
    }
-  // print_history(list1);
-  free_tokens(tokens);
   free_history(list1);
   return 1;
  
