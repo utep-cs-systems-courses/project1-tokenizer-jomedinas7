@@ -21,10 +21,11 @@ int main()
     }
     if(str[0] == '&'){
       printf("$");
-      printf("%c",272);
-      fgets(input,80,stdin);
- 
-      char* ptr = input;
+      // printf("%c",272);
+      // fgets(input,80,stdin);
+      char sInput[50];
+      scanf("%[^\n]s",sInput);
+      char* ptr = sInput;
       printf("Words in this string: %d\n",count_words(ptr));
       char **tokens = tokenize(ptr);
       print_tokens(tokens);
